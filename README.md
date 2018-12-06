@@ -11,3 +11,11 @@ This app will be used to track the daily progress of members at [FOSS@Amrita](ht
 ### Mockups
 
 Mockups for the project can be found [here](https://github.com/AbhilashG97/Melonicious/tree/master/mockups).
+
+### Contributing to the project
+
+Please view the [```Contributing.md```](https://github.com/AbhilashG97/Melonicious/blob/master/CONTRIBUTING.md) file which explains how to contribute to the project.
+
+### Wiki
+
+The wiki for this project can be found [here](https://github.com/AbhilashG97/Melonicious/wiki).
