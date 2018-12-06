@@ -1,4 +1,4 @@
-package abhilash.example.com.gitmelonstalker;
+package abhilash.example.com.melonicious;
 
 import org.junit.Test;
 

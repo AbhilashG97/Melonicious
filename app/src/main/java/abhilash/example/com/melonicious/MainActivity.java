@@ -1,4 +1,4 @@
-package abhilash.example.com.gitmelonstalker;
+package abhilash.example.com.melonicious;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

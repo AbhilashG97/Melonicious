@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "abhilash.example.com.gitmelonstalker"
+        applicationId "abhilash.example.com.melonicious"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
