@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"      
-        android:text="Hello World"
+        android:text="@string/hello_world"
         android"textSize="30sp"/>
                                
    <Button
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_view"
         android:layout_centerHorizontal="true" 
-        android:text="Do something" />                                      
+        android:text="@string/do_something" />                                      
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
