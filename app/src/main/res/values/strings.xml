@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Melonicious</string>
+    <string name="hello world">Hello World</string>
+    <string name="do_something">Do something</string>
+    <string name="toast">This is a toast</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
