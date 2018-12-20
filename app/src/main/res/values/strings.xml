@@ -10,7 +10,7 @@
     <string name="stats">Stats</string>
     <string name="users">Users</string>
     <string name="add_user">Add User</string>
-    <string name="Hardc">Replace with your own action</string>
-    <string name="hardc">Action</string>
-    <string name="hardcoded">Press BACK button again to exit</string>
+    <string name="default_action">Replace with your own action</string>
+    <string name="action">Action</string>
+    <string name="action_exit">Press BACK button again to exit</string>
 </resources>
