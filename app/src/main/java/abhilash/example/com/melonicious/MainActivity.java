@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, R.string.Hardc, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.hardc, null).show();
             }
         });
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
             }
 
             this.doubleBackToExitPressedOnce = true;
-            Snackbar.make(findViewById(android.R.id.content),"Press BACK button again to exit",Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content),R.string.hardcoded,Snackbar.LENGTH_SHORT).show();
 
             new Handler().postDelayed(new Runnable() {
 
