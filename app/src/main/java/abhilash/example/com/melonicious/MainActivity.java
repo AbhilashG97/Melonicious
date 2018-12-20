@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -104,7 +105,14 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_stats) {
 
         } else if (id == R.id.nav_about) {
+            AlertDialog.Builder aboutDialog = new AlertDialog.Builder(MainActivity.this);
+            final View aboutDialogLayout = getLayoutInflater().inflate(R.layout.dialog_about, null);
 
+            aboutDialog.setView(aboutDialogLayout);
+
+            aboutDialog.setCancelable(true);
+            AlertDialog about = aboutDialog.create();
+            about.show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
