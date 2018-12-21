@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Melonicious</string>
+    <string name="navigation_drawer_open">Cajón de navegación abierto</string>
+    <string name="navigation_drawer_close">Cerrar el cajón de navegación</string>
+    <string name="action_settings">Configuración</string>
+    <string name="about">Acerca de</string>
+    <string name="stats">Estadísticas</string>
+    <string name="users">Usuarios</string>
+    <string name="add_user">Agregar usuario</string>
+    <string name="nav_header_desc">Encabezado de navegación</string>
+    <string name="version">Versión</string>
+    <string name="hello">Hola Mundo</string>
+    <string name="default_action">"Reemplaza con tu propia acción. "</string>
+    <string name="action">Acción</string>
+    <string name="action_exit">Presione el botón ATRÁS nuevamente para salir</string>
+</resources>
