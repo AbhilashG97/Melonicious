@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Melonicious</string>
+    <string name="hello_world">Привет, мир! Добро пожаловать в Melonicious. Я здесь, чтобы помочь вам через это приложение.</string>
+    <string name="action_settings">настройки</string>
+    <string name="nav_header_desc">заголовок навигации</string>
+</resources>
