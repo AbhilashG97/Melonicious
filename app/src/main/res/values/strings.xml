@@ -2,8 +2,8 @@
     <string name="app_name">Melonicious</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="about">About</string>
@@ -13,4 +13,6 @@
     <string name="default_action">Replace with your own action</string>
     <string name="action">Action</string>
     <string name="action_exit">Press BACK button again to exit</string>
+    <string name="version">Version</string>
+    <string name="hello">Hello World</string>
 </resources>

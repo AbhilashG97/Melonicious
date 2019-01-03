@@ -23,7 +23,7 @@
                     android:id="@+id/about_dialog_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="About"
+                    android:text="@string/about"
                     android:background="@color/colorPrimaryDark"
                     android:padding="24dp"
                     android:textSize="20sp"
@@ -62,7 +62,7 @@
                         android:paddingLeft="20dp"
                         android:paddingTop="30dp"
                         android:paddingBottom="15dp"
-                        android:text="Version"
+                        android:text="@string/version"
                         android:textColor="#000000"/>
 
                     <TextView
