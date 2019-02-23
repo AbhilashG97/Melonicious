@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Melonicious</string>
+    <string name="hello world">हेलो दुनिया</string>
+    <string name="do_something">कुछ करो</string>
+    <string name="toast">यह एक टोस्ट है</string>
+    <string name="navigation_drawer_open">नेविगेशन ड्रॉअर  खोलें</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रॉअर बंद करें</string>
+    <string name="nav_header_title">एंड्रॉयड स्टूडियो</string>
+    <string name="nav_header_desc">नेविगेशन हेडर</string>
+    <string name="action_settings">सेटिंग्स</string>
+    <string name="about">बारे में</string>
+    <string name="stats">आँकड़े</string>
+    <string name="users">उपयोगकर्ता</string>
+    <string name="add_user">उपयोगकर्ता जोड़ें</string>
+</resources>
