@@ -2,6 +2,8 @@
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Melonicious/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)    [![Build Status](https://travis-ci.org/AbhilashG97/Melonicious.svg?branch=master)](https://travis-ci.org/AbhilashG97/Melonicious)
 
+<p align="center"><img src ="images/melonicious.png" /></p>
+
 An Android app that tracks the daily commits of a given set of GitHub users
 
 ### Why build this app? 
@@ -19,3 +21,7 @@ Please view the [```Contributing.md```](https://github.com/AbhilashG97/Melonicio
 ### Wiki
 
 The wiki for this project can be found [here](https://github.com/AbhilashG97/Melonicious/wiki).
+
+### Mentions
+
+App logo - [kariekirkpatrick](https://github.com/kariekirkpatrick)
