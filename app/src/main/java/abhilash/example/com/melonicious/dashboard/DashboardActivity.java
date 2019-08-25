@@ -152,25 +152,32 @@ public class DashboardActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_user) {
-            // Handle the camera action
+        if (id == R.id.nav_add_user) {
+            // add a user
         } else if (id == R.id.nav_users) {
-
+            // show registered users
         } else if (id == R.id.nav_stats) {
-
+            // show app stats
         } else if (id == R.id.nav_about) {
-            AlertDialog.Builder aboutDialog = new AlertDialog.Builder(DashboardActivity.this);
-            final View aboutDialogLayout = getLayoutInflater().inflate(R.layout.dialog_about, null);
-
-            aboutDialog.setView(aboutDialogLayout);
-
-            aboutDialog.setCancelable(true);
-            AlertDialog about = aboutDialog.create();
-            about.show();
+            showAboutDialog();
+        } else if (id == R.id.nav_about_author) {
+            // show about author page
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void showAboutDialog() {
+        AlertDialog.Builder aboutDialog = new AlertDialog.Builder(DashboardActivity.this);
+        final View aboutDialogLayout = getLayoutInflater().inflate(R.layout.dialog_about, null);
+
+        aboutDialog.setView(aboutDialogLayout);
+
+        aboutDialog.setCancelable(true);
+        AlertDialog about = aboutDialog.create();
+        about.show();
+    }
+
 }

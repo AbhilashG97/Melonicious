@@ -5,7 +5,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_user"
+            android:id="@+id/nav_add_user"
             android:icon="@drawable/ic_menu_adduser"
             android:title="@string/add_user" />
         <item
@@ -20,6 +20,11 @@
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_info"
             android:title="@string/about" />
+
+        <item
+            android:id="@+id/nav_about_author"
+            android:icon="@drawable/ic_person"
+            android:title="@string/author" />
     </group>
 
 
