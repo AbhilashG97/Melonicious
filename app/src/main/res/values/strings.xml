@@ -15,4 +15,6 @@
     <string name="action_exit">Press BACK button again to exit</string>
     <string name="version">Version</string>
     <string name="hello">Hello World</string>
+    <string name="naughty_list">Naughty List</string>
+    <string name="awesome_list">Awesome List</string>
 </resources>
