@@ -1,9 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
+
     dataBinding {
         enabled = true
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "abhilash.example.com.melonicious"
@@ -31,13 +42,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
 
     // retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
 
     // data binding
     implementation 'android.arch.lifecycle:extensions:1.1.1'
 
-    //gson converter
+    // gson converter
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+
+    // apache commons
+    implementation 'org.apache.commons:commons-lang3:3.9'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'

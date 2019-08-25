@@ -1,25 +1,248 @@
 package abhilash.example.com.melonicious.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Mentee {
 
-    private String username;
+    @SerializedName("login")
+    @Expose
+    private String login;
+    @SerializedName("id")
+    @Expose
+    private Integer id;
+    @SerializedName("node_id")
+    @Expose
+    private String nodeId;
+    @SerializedName("avatar_url")
+    @Expose
+    private String avatarUrl;
+    @SerializedName("gravatar_id")
+    @Expose
+    private String gravatarId;
+    @SerializedName("url")
+    @Expose
+    private String url;
+    @SerializedName("html_url")
+    @Expose
+    private String htmlUrl;
+    @SerializedName("followers_url")
+    @Expose
+    private String followersUrl;
+    @SerializedName("following_url")
+    @Expose
+    private String followingUrl;
+    @SerializedName("gists_url")
+    @Expose
+    private String gistsUrl;
+    @SerializedName("starred_url")
+    @Expose
+    private String starredUrl;
+    @SerializedName("subscriptions_url")
+    @Expose
+    private String subscriptionsUrl;
+    @SerializedName("organizations_url")
+    @Expose
+    private String organizationsUrl;
+    @SerializedName("repos_url")
+    @Expose
+    private String reposUrl;
+    @SerializedName("events_url")
+    @Expose
+    private String eventsUrl;
+    @SerializedName("received_events_url")
+    @Expose
+    private String receivedEventsUrl;
+    @SerializedName("type")
+    @Expose
+    private String type;
+    @SerializedName("site_admin")
+    @Expose
+    private Boolean siteAdmin;
+    @SerializedName("name")
+    @Expose
     private String name;
-    private String avatarURL;
-    private String repositoriesURL;
+    @SerializedName("company")
+    @Expose
+    private Object company;
+    @SerializedName("blog")
+    @Expose
+    private String blog;
+    @SerializedName("location")
+    @Expose
+    private Object location;
+    @SerializedName("email")
+    @Expose
+    private Object email;
+    @SerializedName("hireable")
+    @Expose
+    private Boolean hireable;
+    @SerializedName("bio")
+    @Expose
+    private String bio;
+    @SerializedName("public_repos")
+    @Expose
+    private Integer publicRepos;
+    @SerializedName("public_gists")
+    @Expose
+    private Integer publicGists;
+    @SerializedName("followers")
+    @Expose
+    private Integer followers;
+    @SerializedName("following")
+    @Expose
+    private Integer following;
+    @SerializedName("created_at")
+    @Expose
+    private String createdAt;
+    @SerializedName("updated_at")
+    @Expose
+    private String updatedAt;
 
-    public Mentee(String username, String name, String avatarURL, String repositoriesURL) {
-        this.username = username;
-        this.name = name;
-        this.avatarURL = avatarURL;
-        this.repositoriesURL = repositoriesURL;
+    public String getLogin() {
+        return login;
     }
 
-    public String getUsername() {
-        return username;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getGravatarId() {
+        return gravatarId;
+    }
+
+    public void setGravatarId(String gravatarId) {
+        this.gravatarId = gravatarId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getHtmlUrl() {
+        return htmlUrl;
+    }
+
+    public void setHtmlUrl(String htmlUrl) {
+        this.htmlUrl = htmlUrl;
+    }
+
+    public String getFollowersUrl() {
+        return followersUrl;
+    }
+
+    public void setFollowersUrl(String followersUrl) {
+        this.followersUrl = followersUrl;
+    }
+
+    public String getFollowingUrl() {
+        return followingUrl;
+    }
+
+    public void setFollowingUrl(String followingUrl) {
+        this.followingUrl = followingUrl;
+    }
+
+    public String getGistsUrl() {
+        return gistsUrl;
+    }
+
+    public void setGistsUrl(String gistsUrl) {
+        this.gistsUrl = gistsUrl;
+    }
+
+    public String getStarredUrl() {
+        return starredUrl;
+    }
+
+    public void setStarredUrl(String starredUrl) {
+        this.starredUrl = starredUrl;
+    }
+
+    public String getSubscriptionsUrl() {
+        return subscriptionsUrl;
+    }
+
+    public void setSubscriptionsUrl(String subscriptionsUrl) {
+        this.subscriptionsUrl = subscriptionsUrl;
+    }
+
+    public String getOrganizationsUrl() {
+        return organizationsUrl;
+    }
+
+    public void setOrganizationsUrl(String organizationsUrl) {
+        this.organizationsUrl = organizationsUrl;
+    }
+
+    public String getReposUrl() {
+        return reposUrl;
+    }
+
+    public void setReposUrl(String reposUrl) {
+        this.reposUrl = reposUrl;
+    }
+
+    public String getEventsUrl() {
+        return eventsUrl;
+    }
+
+    public void setEventsUrl(String eventsUrl) {
+        this.eventsUrl = eventsUrl;
+    }
+
+    public String getReceivedEventsUrl() {
+        return receivedEventsUrl;
+    }
+
+    public void setReceivedEventsUrl(String receivedEventsUrl) {
+        this.receivedEventsUrl = receivedEventsUrl;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Boolean getSiteAdmin() {
+        return siteAdmin;
+    }
+
+    public void setSiteAdmin(Boolean siteAdmin) {
+        this.siteAdmin = siteAdmin;
     }
 
     public String getName() {
@@ -30,29 +253,105 @@ public class Mentee {
         this.name = name;
     }
 
-    public String getAvatarURL() {
-        return avatarURL;
+    public Object getCompany() {
+        return company;
     }
 
-    public void setAvatarURL(String avatarURL) {
-        this.avatarURL = avatarURL;
+    public void setCompany(Object company) {
+        this.company = company;
     }
 
-    public String getRepositoriesURL() {
-        return repositoriesURL;
+    public String getBlog() {
+        return blog;
     }
 
-    public void setRepositoriesURL(String repositoriesURL) {
-        this.repositoriesURL = repositoriesURL;
+    public void setBlog(String blog) {
+        this.blog = blog;
+    }
+
+    public Object getLocation() {
+        return location;
+    }
+
+    public void setLocation(Object location) {
+        this.location = location;
+    }
+
+    public Object getEmail() {
+        return email;
+    }
+
+    public void setEmail(Object email) {
+        this.email = email;
+    }
+
+    public Boolean getHireable() {
+        return hireable;
+    }
+
+    public void setHireable(Boolean hireable) {
+        this.hireable = hireable;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public Integer getPublicRepos() {
+        return publicRepos;
+    }
+
+    public void setPublicRepos(Integer publicRepos) {
+        this.publicRepos = publicRepos;
+    }
+
+    public Integer getPublicGists() {
+        return publicGists;
+    }
+
+    public void setPublicGists(Integer publicGists) {
+        this.publicGists = publicGists;
+    }
+
+    public Integer getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Integer followers) {
+        this.followers = followers;
+    }
+
+    public Integer getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Integer following) {
+        this.following = following;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
     public String toString() {
-        return "Mentee{" +
-                "username='" + username + '\'' +
-                ", name='" + name + '\'' +
-                ", avatarURL='" + avatarURL + '\'' +
-                ", repositoriesURL='" + repositoriesURL + '\'' +
-                '}';
+        return new ToStringBuilder(this).append("login", login).append("id", id).append("nodeId", nodeId).append("avatarUrl", avatarUrl).append("gravatarId", gravatarId).append("url", url).append("htmlUrl", htmlUrl).append("followersUrl", followersUrl).append("followingUrl", followingUrl).append("gistsUrl", gistsUrl).append("starredUrl", starredUrl).append("subscriptionsUrl", subscriptionsUrl).append("organizationsUrl", organizationsUrl).append("reposUrl", reposUrl).append("eventsUrl", eventsUrl).append("receivedEventsUrl", receivedEventsUrl).append("type", type).append("siteAdmin", siteAdmin).append("name", name).append("company", company).append("blog", blog).append("location", location).append("email", email).append("hireable", hireable).append("bio", bio).append("publicRepos", publicRepos).append("publicGists", publicGists).append("followers", followers).append("following", following).append("createdAt", createdAt).append("updatedAt", updatedAt).toString();
     }
+
 }

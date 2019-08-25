@@ -14,13 +14,20 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import abhilash.example.com.melonicious.R;
+import abhilash.example.com.melonicious.adapters.DashboardViewPagerAdapter;
+import abhilash.example.com.melonicious.dashboard.dashboardfragments.awesomelist.AwesomeListFragment;
+import abhilash.example.com.melonicious.dashboard.dashboardfragments.naughtylist.NaughtListFragment;
+import abhilash.example.com.melonicious.model.Mentee;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +35,8 @@ public class DashboardActivity extends AppCompatActivity
     private boolean mDoubleBackToExitPressedOnce = false;
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private DashboardViewModel viewModel;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +47,17 @@ public class DashboardActivity extends AppCompatActivity
 
         viewPager = findViewById(R.id.viewpager_dashboard);
         tabLayout = findViewById(R.id.tablayout_dashboard);
+        fab = findViewById(R.id.fab);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, R.string.default_action, Snackbar.LENGTH_LONG)
-                        .setAction(R.string.action, null).show();
-            }
-        });
+        viewModel = ViewModelProviders.of(this,
+                new DashboardViewModelFactory("AbhilashG97"))
+                .get(DashboardViewModel.class);
+
+        initializeViewPager();
+        tabLayout.setupWithViewPager(viewPager);
+
+        onFABClicked();
+        observeViewModal();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,8 +70,33 @@ public class DashboardActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void initializeViewPager() {
+    private void observeViewModal() {
+        viewModel.getMenteeObservable().observe(this, new Observer<Mentee>() {
+            @Override
+            public void onChanged(Mentee mentee) {
+                Log.i("FETCHED DATA", mentee.toString());
+            }
+        });
+    }
 
+    private void initializeViewPager() {
+        DashboardViewPagerAdapter viewPagerAdapter =
+                new DashboardViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new NaughtListFragment(),
+                getResources().getString(R.string.naughty_list));
+        viewPagerAdapter.addFragment(new AwesomeListFragment(),
+                getResources().getString(R.string.awesome_list));
+        viewPager.setAdapter(viewPagerAdapter);
+    }
+
+    private void onFABClicked() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, R.string.default_action, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.action, null).show();
+            }
+        });
     }
 
     @Override
