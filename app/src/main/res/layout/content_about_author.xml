@@ -8,10 +8,12 @@
     tools:context=".aboutauthor.AboutAuthorActivity"
     tools:showIn="@layout/activity_about_author">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager_about_author"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </androidx.viewpager.widget.ViewPager>
 
 </androidx.core.widget.NestedScrollView>

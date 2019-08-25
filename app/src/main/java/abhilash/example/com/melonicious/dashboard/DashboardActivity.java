@@ -1,5 +1,6 @@
 package abhilash.example.com.melonicious.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -24,6 +25,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import abhilash.example.com.melonicious.R;
+import abhilash.example.com.melonicious.aboutauthor.AboutAuthorActivity;
+import abhilash.example.com.melonicious.adapters.AboutAuthorViewPagerAdapter;
 import abhilash.example.com.melonicious.adapters.DashboardViewPagerAdapter;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.awesomelist.AwesomeListFragment;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.naughtylist.NaughtListFragment;
@@ -161,7 +164,7 @@ public class DashboardActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             showAboutDialog();
         } else if (id == R.id.nav_about_author) {
-            // show about author page
+            startActivity(new Intent(this, AboutAuthorActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
