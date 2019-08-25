@@ -3,31 +3,30 @@ package abhilash.example.com.melonicious.dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.viewpager.widget.ViewPager;
-
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.aboutauthor.AboutAuthorActivity;
-import abhilash.example.com.melonicious.adapters.AboutAuthorViewPagerAdapter;
 import abhilash.example.com.melonicious.adapters.DashboardViewPagerAdapter;
+import abhilash.example.com.melonicious.addmentee.AddMenteeActivity;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.awesomelist.AwesomeListFragment;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.naughtylist.NaughtListFragment;
 import abhilash.example.com.melonicious.model.Mentee;
@@ -156,7 +155,7 @@ public class DashboardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add_user) {
-            // add a user
+            startActivity(new Intent(this, AddMenteeActivity.class));
         } else if (id == R.id.nav_users) {
             // show registered users
         } else if (id == R.id.nav_stats) {

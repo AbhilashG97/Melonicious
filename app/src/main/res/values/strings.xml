@@ -23,4 +23,7 @@
     <string name="author_name">Abhilash G</string>
     <string name="author_affiliation">Amrita Vishwa Vidyapeetham</string>
     <string name="author_email">abhilash.gunasegaran@gmail.com</string>
+    <string name="enter_github_username">Enter GitHub username</string>
+    <string name="enter_skillsets">Enter Skillsets</string>
+    <string name="enter_interests">Enter Interests</string>
 </resources>

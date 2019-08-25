@@ -1,30 +1,42 @@
 package abhilash.example.com.melonicious.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import java.util.ArrayList;
 
+@Entity
 public class Mentee {
 
     @SerializedName("login")
     @Expose
     private String login;
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;
     @SerializedName("node_id")
     @Expose
     private String nodeId;
+
+    @ColumnInfo
     @SerializedName("avatar_url")
     @Expose
     private String avatarUrl;
+
     @SerializedName("gravatar_id")
     @Expose
     private String gravatarId;
+
+    @ColumnInfo
     @SerializedName("url")
     @Expose
     private String url;
+
     @SerializedName("html_url")
     @Expose
     private String htmlUrl;
@@ -43,9 +55,12 @@ public class Mentee {
     @SerializedName("subscriptions_url")
     @Expose
     private String subscriptionsUrl;
+
+    @ColumnInfo
     @SerializedName("organizations_url")
     @Expose
     private String organizationsUrl;
+
     @SerializedName("repos_url")
     @Expose
     private String reposUrl;
@@ -67,24 +82,35 @@ public class Mentee {
     @SerializedName("company")
     @Expose
     private Object company;
+
+    @ColumnInfo
     @SerializedName("blog")
     @Expose
     private String blog;
+
     @SerializedName("location")
     @Expose
     private Object location;
+
+    @ColumnInfo
     @SerializedName("email")
     @Expose
     private Object email;
+
     @SerializedName("hireable")
     @Expose
     private Boolean hireable;
+
+    @ColumnInfo
     @SerializedName("bio")
     @Expose
     private String bio;
+
+    @ColumnInfo
     @SerializedName("public_repos")
     @Expose
     private Integer publicRepos;
+
     @SerializedName("public_gists")
     @Expose
     private Integer publicGists;
@@ -100,6 +126,12 @@ public class Mentee {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+
+    private String username;
+
+    private ArrayList<String> interests;
+
+    private ArrayList<String> skillsets;
 
     public String getLogin() {
         return login;
@@ -349,9 +381,67 @@ public class Mentee {
         this.updatedAt = updatedAt;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("login", login).append("id", id).append("nodeId", nodeId).append("avatarUrl", avatarUrl).append("gravatarId", gravatarId).append("url", url).append("htmlUrl", htmlUrl).append("followersUrl", followersUrl).append("followingUrl", followingUrl).append("gistsUrl", gistsUrl).append("starredUrl", starredUrl).append("subscriptionsUrl", subscriptionsUrl).append("organizationsUrl", organizationsUrl).append("reposUrl", reposUrl).append("eventsUrl", eventsUrl).append("receivedEventsUrl", receivedEventsUrl).append("type", type).append("siteAdmin", siteAdmin).append("name", name).append("company", company).append("blog", blog).append("location", location).append("email", email).append("hireable", hireable).append("bio", bio).append("publicRepos", publicRepos).append("publicGists", publicGists).append("followers", followers).append("following", following).append("createdAt", createdAt).append("updatedAt", updatedAt).toString();
+    public String getUsername() {
+        return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public ArrayList<String> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(ArrayList<String> interests) {
+        this.interests = interests;
+    }
+
+    public ArrayList<String> getSkillsets() {
+        return skillsets;
+    }
+
+    public void setSkillsets(ArrayList<String> skillsets) {
+        this.skillsets = skillsets;
+    }
+
+    @Override
+    public String toString() {
+        return "Mentee{" +
+                "login='" + login + '\'' +
+                ", id=" + id +
+                ", nodeId='" + nodeId + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", gravatarId='" + gravatarId + '\'' +
+                ", url='" + url + '\'' +
+                ", htmlUrl='" + htmlUrl + '\'' +
+                ", followersUrl='" + followersUrl + '\'' +
+                ", followingUrl='" + followingUrl + '\'' +
+                ", gistsUrl='" + gistsUrl + '\'' +
+                ", starredUrl='" + starredUrl + '\'' +
+                ", subscriptionsUrl='" + subscriptionsUrl + '\'' +
+                ", organizationsUrl='" + organizationsUrl + '\'' +
+                ", reposUrl='" + reposUrl + '\'' +
+                ", eventsUrl='" + eventsUrl + '\'' +
+                ", receivedEventsUrl='" + receivedEventsUrl + '\'' +
+                ", type='" + type + '\'' +
+                ", siteAdmin=" + siteAdmin +
+                ", name='" + name + '\'' +
+                ", company=" + company +
+                ", blog='" + blog + '\'' +
+                ", location=" + location +
+                ", email=" + email +
+                ", hireable=" + hireable +
+                ", bio='" + bio + '\'' +
+                ", publicRepos=" + publicRepos +
+                ", publicGists=" + publicGists +
+                ", followers=" + followers +
+                ", following=" + following +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                ", username='" + username + '\'' +
+                ", interests=" + interests +
+                ", skillsets=" + skillsets +
+                '}';
+    }
 }

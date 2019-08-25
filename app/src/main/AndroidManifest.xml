@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".addmentee.AddMenteeActivity"></activity>
         <activity
             android:name=".aboutauthor.AboutAuthorActivity"
             android:label="@string/title_activity_about_author"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.DashboardActivity"
             android:label="@string/app_name"
