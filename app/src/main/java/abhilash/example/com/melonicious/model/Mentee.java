@@ -81,7 +81,7 @@ public class Mentee {
     private String name;
     @SerializedName("company")
     @Expose
-    private Object company;
+    private String company;
 
     @ColumnInfo
     @SerializedName("blog")
@@ -90,12 +90,12 @@ public class Mentee {
 
     @SerializedName("location")
     @Expose
-    private Object location;
+    private String location;
 
     @ColumnInfo
     @SerializedName("email")
     @Expose
-    private Object email;
+    private String email;
 
     @SerializedName("hireable")
     @Expose
@@ -128,6 +128,7 @@ public class Mentee {
     private String updatedAt;
 
     private String username;
+
 
     private ArrayList<String> interests;
 
@@ -285,11 +286,11 @@ public class Mentee {
         this.name = name;
     }
 
-    public Object getCompany() {
+    public String getCompany() {
         return company;
     }
 
-    public void setCompany(Object company) {
+    public void setCompany(String company) {
         this.company = company;
     }
 
@@ -301,19 +302,19 @@ public class Mentee {
         this.blog = blog;
     }
 
-    public Object getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Object location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -427,10 +428,10 @@ public class Mentee {
                 ", type='" + type + '\'' +
                 ", siteAdmin=" + siteAdmin +
                 ", name='" + name + '\'' +
-                ", company=" + company +
+                ", company='" + company + '\'' +
                 ", blog='" + blog + '\'' +
-                ", location=" + location +
-                ", email=" + email +
+                ", location='" + location + '\'' +
+                ", email='" + email + '\'' +
                 ", hireable=" + hireable +
                 ", bio='" + bio + '\'' +
                 ", publicRepos=" + publicRepos +

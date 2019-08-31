@@ -13,10 +13,6 @@ public class DashboardViewModel extends ViewModel {
         menteeObservable = null;
     }
 
-    public DashboardViewModel(String username) {
-        menteeObservable = DashboardRepository.getInstance().getGitHubUser(username);
-    }
-
     public LiveData<Mentee> getMenteeObservable() {
         return  menteeObservable;
     }

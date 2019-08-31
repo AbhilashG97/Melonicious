@@ -51,15 +51,12 @@ public class DashboardActivity extends AppCompatActivity
         tabLayout = findViewById(R.id.tablayout_dashboard);
         fab = findViewById(R.id.fab);
 
-        viewModel = ViewModelProviders.of(this,
-                new DashboardViewModelFactory("AbhilashG97"))
-                .get(DashboardViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
 
         initializeViewPager();
         tabLayout.setupWithViewPager(viewPager);
 
         onFABClicked();
-        observeViewModal();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,15 +67,6 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    private void observeViewModal() {
-        viewModel.getMenteeObservable().observe(this, new Observer<Mentee>() {
-            @Override
-            public void onChanged(Mentee mentee) {
-                Log.i("FETCHED DATA", mentee.toString());
-            }
-        });
     }
 
     private void initializeViewPager() {

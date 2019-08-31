@@ -5,12 +5,13 @@ import androidx.room.Database;
 import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import abhilash.example.com.melonicious.model.Mentee;
 
 @Database(entities = {Mentee.class}, version = 1, exportSchema = false)
-
+@TypeConverters({Converter.class})
 public abstract class MenteeDatabase extends RoomDatabase {
 
     public abstract DaoAccess daoAccess();

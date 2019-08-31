@@ -43,6 +43,8 @@ dependencies {
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+
 
     // data binding
     implementation 'android.arch.lifecycle:extensions:1.1.1'
@@ -57,8 +59,15 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     // room db
-    implementation 'android.arch.persistence.room:runtime:1.1.1'
-    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+    def room_version = "2.2.0-beta01"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // rxJava and rxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
