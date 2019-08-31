@@ -83,8 +83,7 @@ public class DashboardActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, R.string.default_action, Snackbar.LENGTH_LONG)
-                        .setAction(R.string.action, null).show();
+                startActivity(new Intent(getBaseContext(), AddMenteeActivity.class));
             }
         });
     }

@@ -5,6 +5,8 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.List;
+
 import abhilash.example.com.melonicious.model.Mentee;
 import abhilash.example.com.melonicious.retrofit.RetrofitInstance;
 import abhilash.example.com.melonicious.retrofit.RetrofitService;
@@ -15,11 +17,13 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AddMenteeRepository {
     private RetrofitService service;
+    private Mentee mMentee;
 
     private static AddMenteeRepository addMenteeRepository;
 
     private AddMenteeRepository() {
-        // Default constructor
+        mMentee = new Mentee();
+        service = RetrofitInstance.getRetrofit().create(RetrofitService.class);
     }
 
     public static AddMenteeRepository getInstance() {
@@ -29,9 +33,11 @@ public class AddMenteeRepository {
         return addMenteeRepository;
     }
 
-    public LiveData<Mentee> getGitHubUser(String username) {
+    public LiveData<Mentee> getGitHubUser(String username,
+                                          List<String> interests,
+                                          List<String> skillset) {
         final MutableLiveData<Mentee> data = new MutableLiveData<>();
-        service = RetrofitInstance.getRetrofit().create(RetrofitService.class);
+
         Observable<Mentee> menteeObservable = service.getMentee(username);
         menteeObservable.subscribeOn(Schedulers.io())
                         .observeOn(Schedulers.newThread())
@@ -43,6 +49,9 @@ public class AddMenteeRepository {
 
                             @Override
                             public void onNext(Mentee mentee) {
+                                mMentee = mentee;
+                                mMentee.setInterests(interests);
+                                mMentee.setSkillsets(skillset);
                                 data.postValue(mentee);
                                 Log.i("Fetched Mentee", mentee.toString());
                             }
@@ -59,4 +68,5 @@ public class AddMenteeRepository {
                         });
         return data;
     }
+
 }

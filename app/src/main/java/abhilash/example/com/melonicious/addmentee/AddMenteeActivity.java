@@ -1,9 +1,5 @@
 package abhilash.example.com.melonicious.addmentee;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.adapters.ToolbarBindingAdapter;
-import androidx.lifecycle.Observer;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,8 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.model.Mentee;
+import abhilash.example.com.melonicious.utility.Utility;
 
 public class AddMenteeActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class AddMenteeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mentee);
+        viewModel = ViewModelProviders.of(this).get(AddMenteeViewModel.class);
 
         username = findViewById(R.id.editText_username);
         skillsets = findViewById(R.id.editText_skillset);
@@ -49,8 +51,11 @@ public class AddMenteeActivity extends AppCompatActivity {
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel = new AddMenteeViewModel(username.getText().toString());
+                viewModel.setMenteeLiveData(username.getText().toString(),
+                        Utility.getListFromCSV(interests.getText().toString()),
+                                Utility.getListFromCSV(skillsets.getText().toString()));
                 observeViewModal();
+                finish();
             }
         });
     }

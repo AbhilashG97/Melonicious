@@ -1,5 +1,7 @@
 package abhilash.example.com.melonicious.model;
 
+import android.util.Log;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -8,6 +10,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Mentee {
@@ -129,10 +132,9 @@ public class Mentee {
 
     private String username;
 
+    private List<String> interests = new ArrayList<>();
 
-    private ArrayList<String> interests;
-
-    private ArrayList<String> skillsets;
+    private List<String> skillsets = new ArrayList<>();
 
     public String getLogin() {
         return login;
@@ -390,20 +392,22 @@ public class Mentee {
         this.username = username;
     }
 
-    public ArrayList<String> getInterests() {
+    public List<String> getInterests() {
         return interests;
     }
 
-    public void setInterests(ArrayList<String> interests) {
-        this.interests = interests;
+    public void setInterests(List<String> interestList) {
+        Log.i("INTERESTS MODEL", interestList.toString());
+        interests.addAll(interestList);
     }
 
-    public ArrayList<String> getSkillsets() {
+    public List<String> getSkillsets() {
         return skillsets;
     }
 
-    public void setSkillsets(ArrayList<String> skillsets) {
-        this.skillsets = skillsets;
+    public void setSkillsets(List<String> skillsetList) {
+        Log.i("SKILLSET MODEL", skillsetList.toString());
+        skillsets.addAll(skillsetList);
     }
 
     @Override
