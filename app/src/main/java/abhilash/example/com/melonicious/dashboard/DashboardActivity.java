@@ -3,7 +3,6 @@ package abhilash.example.com.melonicious.dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
@@ -29,7 +27,6 @@ import abhilash.example.com.melonicious.adapters.DashboardViewPagerAdapter;
 import abhilash.example.com.melonicious.addmentee.AddMenteeActivity;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.awesomelist.AwesomeListFragment;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.naughtylist.NaughtListFragment;
-import abhilash.example.com.melonicious.model.Mentee;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

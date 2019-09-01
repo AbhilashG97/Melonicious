@@ -31,7 +31,7 @@ public class AchievementsFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(AchievementsViewModel.class);
         View view = inflater.inflate(R.layout.achievements_fragment, container, false);
         recyclerView = view.findViewById(R.id.recycler_achievements);
-        Log.i("AVHIEVEMENTS", mViewModel
+        Log.i("ACHIEVEMENTS", mViewModel
                 .getAchievementArrayListMutableLiveData().getValue().toString());
         recyclerView.setAdapter(new AchievementsRecyclerViewAdapter(mViewModel
                 .getAchievementArrayListMutableLiveData().getValue()));

@@ -1,7 +1,10 @@
 package abhilash.example.com.melonicious.addmentee;
 
-import android.util.Log;
+import android.app.Application;
+import android.content.Context;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,14 +13,18 @@ import java.util.List;
 
 import abhilash.example.com.melonicious.model.Mentee;
 
-public class AddMenteeViewModel extends ViewModel {
+public class AddMenteeViewModel extends AndroidViewModel {
 
     private LiveData<Mentee> menteeLiveData;
     private AddMenteeRepository mAddMenteeRepository;
+    private Context context;
 
-    public AddMenteeViewModel() {
+    public AddMenteeViewModel(@NonNull Application application) {
+        super(application);
+        context = application.getApplicationContext();
         menteeLiveData = new MutableLiveData<>();
         mAddMenteeRepository = AddMenteeRepository.getInstance();
+        mAddMenteeRepository.setRepositoryContext(context);
     }
 
     public void setMenteeLiveData(String username, List<String> interests, List<String> skillset) {
@@ -27,5 +34,7 @@ public class AddMenteeViewModel extends ViewModel {
     public LiveData<Mentee> getMenteeObservable() {
         return  menteeLiveData;
     }
+
+
 
 }
