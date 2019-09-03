@@ -3,12 +3,10 @@ package abhilash.example.com.melonicious.addmentee;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
 
 import java.util.List;
 
@@ -29,16 +27,19 @@ public class AddMenteeRepository {
     private MenteeDatabase mMenteeDatabase;
     private static AddMenteeRepository addMenteeRepository;
 
-    private AddMenteeRepository() {
+
+    private AddMenteeRepository(Context context) {
         mMentee = new Mentee();
+        mContext = context;
         service = RetrofitInstance.getRetrofit().create(RetrofitService.class);
         mMenteeDatabase = Room.databaseBuilder(mContext, MenteeDatabase.class, "Mentee")
-        .build();
+                .build();
     }
 
-    public static AddMenteeRepository getInstance() {
+
+    public static AddMenteeRepository getInstance(Context context) {
         if (addMenteeRepository == null) {
-            addMenteeRepository = new AddMenteeRepository();
+            addMenteeRepository = new AddMenteeRepository(context);
         }
         return addMenteeRepository;
     }
@@ -62,9 +63,9 @@ public class AddMenteeRepository {
                                 mMentee = mentee;
                                 mMentee.setInterests(interests);
                                 mMentee.setSkillsets(skillset);
+                                Log.i("Fetched Mentee", mentee.toString());
                                 data.postValue(mentee);
                                 insertTask(mentee);
-                                Log.i("Fetched Mentee", mentee.toString());
                             }
 
                             @Override
@@ -85,14 +86,9 @@ public class AddMenteeRepository {
             @Override
             protected Void doInBackground(Void... voids) {
                 mMenteeDatabase.daoAccess().insertMentee(mentee);
-                Toast.makeText(mContext, "Mentee Inserted", Toast.LENGTH_LONG).show();
+                Log.i("INSERTED MENTEE", mentee.toString());
                 return null;
             }
         }.execute();
     }
-
-    public void setRepositoryContext(Context context) {
-        mContext = context;
-    }
-
 }

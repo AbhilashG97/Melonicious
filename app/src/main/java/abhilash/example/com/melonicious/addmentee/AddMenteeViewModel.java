@@ -17,14 +17,12 @@ public class AddMenteeViewModel extends AndroidViewModel {
 
     private LiveData<Mentee> menteeLiveData;
     private AddMenteeRepository mAddMenteeRepository;
-    private Context context;
 
     public AddMenteeViewModel(@NonNull Application application) {
         super(application);
-        context = application.getApplicationContext();
+        Context context = application.getApplicationContext();
         menteeLiveData = new MutableLiveData<>();
-        mAddMenteeRepository = AddMenteeRepository.getInstance();
-        mAddMenteeRepository.setRepositoryContext(context);
+        mAddMenteeRepository = AddMenteeRepository.getInstance(context);
     }
 
     public void setMenteeLiveData(String username, List<String> interests, List<String> skillset) {
@@ -34,7 +32,5 @@ public class AddMenteeViewModel extends AndroidViewModel {
     public LiveData<Mentee> getMenteeObservable() {
         return  menteeLiveData;
     }
-
-
 
 }
