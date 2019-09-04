@@ -1,5 +1,7 @@
 package abhilash.example.com.melonicious.dashboard;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,16 +47,22 @@ public class DashboardActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        viewPager = findViewById(R.id.viewpager_dashboard);
-        tabLayout = findViewById(R.id.tablayout_dashboard);
-        fab = findViewById(R.id.fab);
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.framelayout_content, new MainDashboardFragment());
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+//        viewPager = findViewById(R.id.viewpager_dashboard);
+//        tabLayout = findViewById(R.id.tablayout_dashboard);
+//        fab = findViewById(R.id.fab);
 
         viewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
 
-        initializeViewPager();
-        tabLayout.setupWithViewPager(viewPager);
+//        initializeViewPager();
+//        tabLayout.setupWithViewPager(viewPager);
 
-        onFABClicked();
+//        onFABClicked();
         initializeStetho();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -82,14 +90,14 @@ public class DashboardActivity extends AppCompatActivity
         viewPager.setAdapter(viewPagerAdapter);
     }
 
-    private void onFABClicked() {
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(), AddMenteeActivity.class));
-            }
-        });
-    }
+//    private void onFABClicked() {
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getBaseContext(), AddMenteeActivity.class));
+//            }
+//        });
+//    }
 
     @Override
     public void onBackPressed() {
