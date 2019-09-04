@@ -15,13 +15,15 @@ import java.util.List;
 @Entity
 public class Mentee {
 
-    @SerializedName("login")
-    @Expose
-    private String login;
     @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;
+
+    @SerializedName("login")
+    @Expose
+    private String login;
+
     @SerializedName("node_id")
     @Expose
     private String nodeId;
@@ -131,10 +133,12 @@ public class Mentee {
     private String updatedAt;
 
     private String username;
-
     private List<String> interests = new ArrayList<>();
-
     private List<String> skillsets = new ArrayList<>();
+
+    public Mentee() {
+        // default constructor
+    }
 
     public String getLogin() {
         return login;

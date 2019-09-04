@@ -13,6 +13,7 @@ import java.util.List;
 import abhilash.example.com.melonicious.model.Mentee;
 import abhilash.example.com.melonicious.retrofit.RetrofitInstance;
 import abhilash.example.com.melonicious.retrofit.RetrofitService;
+import abhilash.example.com.melonicious.roomdb.DaoAccess;
 import abhilash.example.com.melonicious.roomdb.MenteeDatabase;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -85,8 +86,13 @@ public class AddMenteeRepository {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
-                mMenteeDatabase.daoAccess().insertMentee(mentee);
-                Log.i("INSERTED MENTEE", mentee.toString());
+                DaoAccess daoAccess =  mMenteeDatabase.daoAccess();
+                if(daoAccess.getMenteeID(mentee.getId()) != null) {
+                    Log.i("MENTEE ALREADY EXISTS", mentee.getId().toString());
+                } else {
+                    daoAccess.insertMentee(mentee);
+                    Log.i("INSERTED MENTEE", mentee.toString());
+                }
                 return null;
             }
         }.execute();

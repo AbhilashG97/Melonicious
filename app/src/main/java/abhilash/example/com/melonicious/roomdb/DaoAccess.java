@@ -15,6 +15,9 @@ public interface DaoAccess {
     @Insert
     void insertMentee(Mentee mentee);
 
+    @Query("SELECT id from Mentee WHERE id = :id")
+    Integer getMenteeID(Integer id);
+
     @Query("Select * from Mentee")
     LiveData<List<Mentee>> getAllMentees();
 

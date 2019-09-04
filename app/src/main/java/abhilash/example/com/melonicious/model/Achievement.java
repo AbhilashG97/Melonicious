@@ -4,6 +4,10 @@ public class Achievement {
     private String achievementName;
     private int imageId;
 
+    public Achievement() {
+        // default constructor
+    }
+
     public Achievement(String achievementName, int imageId) {
         this.achievementName = achievementName;
         this.imageId = imageId;
