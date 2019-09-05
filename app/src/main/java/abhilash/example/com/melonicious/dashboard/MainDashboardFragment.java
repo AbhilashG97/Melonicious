@@ -1,16 +1,14 @@
 package abhilash.example.com.melonicious.dashboard;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,7 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.adapters.DashboardViewPagerAdapter;
-import abhilash.example.com.melonicious.addmentee.AddMenteeActivity;
+import abhilash.example.com.melonicious.addmentee.AddMenteeFragment;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.awesomelist.AwesomeListFragment;
 import abhilash.example.com.melonicious.dashboard.dashboardfragments.naughtylist.NaughtListFragment;
 
@@ -52,8 +50,6 @@ public class MainDashboardFragment extends Fragment {
         initializeViewPager();
         tabLayout.setupWithViewPager(viewPager);
         onFABClicked();
-        Toast.makeText(getContext(), "This is the DashboardFragment", Toast.LENGTH_LONG)
-                .show();
         return view;
     }
 
@@ -71,9 +67,12 @@ public class MainDashboardFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), AddMenteeActivity.class));
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.framelayout_content, new AddMenteeFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
     }
-
 }

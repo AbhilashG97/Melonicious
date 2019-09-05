@@ -21,9 +21,11 @@ import com.facebook.stetho.Stetho;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.IOException;
+
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.aboutauthor.AboutAuthorActivity;
-import abhilash.example.com.melonicious.addmentee.AddMenteeActivity;
+import abhilash.example.com.melonicious.addmentee.AddMenteeFragment;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,28 +70,52 @@ public class DashboardActivity extends AppCompatActivity
         transaction.commit();
     }
 
+    private void startAddMenteeFragment() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.framelayout_content, new AddMenteeFragment());
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if (mDoubleBackToExitPressedOnce) {
+
+            int count = getSupportFragmentManager().getBackStackEntryCount();
+
+            if (count == 1) {
+                startDashboardMainFragment();
+
                 super.onBackPressed();
-                return;
-            }
-
-            this.mDoubleBackToExitPressedOnce = true;
-            Snackbar.make(findViewById(R.id.main_activity_coordinator), R.string.action_exit,
-                    Snackbar.LENGTH_SHORT).show();
-
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    mDoubleBackToExitPressedOnce = false;
+                if (mDoubleBackToExitPressedOnce) {
+                    super.onBackPressed();
+                    this.finish();
                 }
-            }, 2000);
+
+                this.mDoubleBackToExitPressedOnce = true;
+
+                try {
+                    Snackbar.make(findViewById(R.id.main_fragment_coordinator), R.string.action_exit,
+                            Snackbar.LENGTH_SHORT).show();
+                } catch (NullPointerException npe) {
+                    npe.printStackTrace();
+                }
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        mDoubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
+
+            } else {
+                getSupportFragmentManager().popBackStack();
+            }
         }
     }
 
@@ -122,9 +148,9 @@ public class DashboardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add_user) {
-            startActivity(new Intent(this, AddMenteeActivity.class));
+            startAddMenteeFragment();
         } else if (id == R.id.nav_users) {
-            startDashboardMainFragment();
+
         } else if (id == R.id.nav_stats) {
             // show app stats
         } else if (id == R.id.nav_about) {
