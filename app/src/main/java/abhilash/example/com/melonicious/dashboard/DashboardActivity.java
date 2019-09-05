@@ -13,30 +13,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.viewpager.widget.ViewPager;
 
 import com.facebook.stetho.Stetho;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
 
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.aboutauthor.AboutAuthorActivity;
-import abhilash.example.com.melonicious.adapters.DashboardViewPagerAdapter;
 import abhilash.example.com.melonicious.addmentee.AddMenteeActivity;
-import abhilash.example.com.melonicious.dashboard.dashboardfragments.awesomelist.AwesomeListFragment;
-import abhilash.example.com.melonicious.dashboard.dashboardfragments.naughtylist.NaughtListFragment;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private boolean mDoubleBackToExitPressedOnce = false;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
     private DashboardViewModel viewModel;
-    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,16 +38,9 @@ public class DashboardActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        viewPager = findViewById(R.id.viewpager_dashboard);
-        tabLayout = findViewById(R.id.tablayout_dashboard);
-        fab = findViewById(R.id.fab);
 
         viewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
 
-        initializeViewPager();
-        tabLayout.setupWithViewPager(viewPager);
-
-        onFABClicked();
         initializeStetho();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -66,29 +52,20 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        startDashboardMainFragment();
     }
 
     private void initializeStetho() {
         Stetho.initializeWithDefaults(this);
     }
 
-    private void initializeViewPager() {
-        DashboardViewPagerAdapter viewPagerAdapter =
-                new DashboardViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new NaughtListFragment(),
-                getResources().getString(R.string.naughty_list));
-        viewPagerAdapter.addFragment(new AwesomeListFragment(),
-                getResources().getString(R.string.awesome_list));
-        viewPager.setAdapter(viewPagerAdapter);
-    }
-
-    private void onFABClicked() {
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(), AddMenteeActivity.class));
-            }
-        });
+    private void startDashboardMainFragment() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.framelayout_content, new MainDashboardFragment());
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
@@ -147,7 +124,7 @@ public class DashboardActivity extends AppCompatActivity
         if (id == R.id.nav_add_user) {
             startActivity(new Intent(this, AddMenteeActivity.class));
         } else if (id == R.id.nav_users) {
-            // show registered users
+            startDashboardMainFragment();
         } else if (id == R.id.nav_stats) {
             // show app stats
         } else if (id == R.id.nav_about) {
