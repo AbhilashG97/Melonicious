@@ -26,6 +26,7 @@ import java.io.IOException;
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.aboutauthor.AboutAuthorActivity;
 import abhilash.example.com.melonicious.addmentee.AddMenteeFragment;
+import abhilash.example.com.melonicious.viewmentee.ViewMenteeFragment;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -74,6 +75,14 @@ public class DashboardActivity extends AppCompatActivity
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.framelayout_content, new AddMenteeFragment());
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    private void startViewMenteeFragment() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.framelayout_content, new ViewMenteeFragment());
         transaction.addToBackStack(null);
         transaction.commit();
     }
@@ -150,7 +159,7 @@ public class DashboardActivity extends AppCompatActivity
         if (id == R.id.nav_add_user) {
             startAddMenteeFragment();
         } else if (id == R.id.nav_users) {
-
+            startViewMenteeFragment();
         } else if (id == R.id.nav_stats) {
             // show app stats
         } else if (id == R.id.nav_about) {

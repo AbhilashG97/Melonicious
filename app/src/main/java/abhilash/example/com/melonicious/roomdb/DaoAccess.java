@@ -1,6 +1,5 @@
 package abhilash.example.com.melonicious.roomdb;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -19,6 +18,6 @@ public interface DaoAccess {
     Integer getMenteeID(Integer id);
 
     @Query("Select * from Mentee")
-    LiveData<List<Mentee>> getAllMentees();
+    List<Mentee> getAllMentees();
 
 }
