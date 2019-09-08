@@ -132,7 +132,6 @@ public class Mentee {
     @Expose
     private String updatedAt;
 
-    private String username;
     private List<String> interests = new ArrayList<>();
     private List<String> skillsets = new ArrayList<>();
 
@@ -388,14 +387,6 @@ public class Mentee {
         this.updatedAt = updatedAt;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public List<String> getInterests() {
         return interests;
     }
@@ -448,7 +439,6 @@ public class Mentee {
                 ", following=" + following +
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +
-                ", username='" + username + '\'' +
                 ", interests=" + interests +
                 ", skillsets=" + skillsets +
                 '}';

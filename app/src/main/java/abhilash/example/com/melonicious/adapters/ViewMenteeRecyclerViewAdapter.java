@@ -37,9 +37,9 @@ public class ViewMenteeRecyclerViewAdapter extends RecyclerView.Adapter<ViewMent
 
     @Override
     public void onBindViewHolder(@NonNull ViewMenteeViewHolder holder, int position) {
-        Log.i("ADAPTER INFO", menteeList.get(position).getUsername()+"");
+        Log.i("ADAPTER INFO", menteeList.get(position).getLogin()+"");
         Log.i("ADAPTER INFO", Uri.parse(menteeList.get(position).getAvatarUrl())+"");
-        holder.menteeUsername.setText(menteeList.get(position).getUsername());
+        holder.menteeUsername.setText(menteeList.get(position).getLogin());
         Picasso.get().load(menteeList.get(position).getAvatarUrl()).into(holder.menteeCircleImageView);
     }
 
