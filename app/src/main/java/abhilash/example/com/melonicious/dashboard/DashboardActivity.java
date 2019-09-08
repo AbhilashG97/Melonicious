@@ -156,7 +156,9 @@ public class DashboardActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_add_user) {
+        if (id == R.id.nav_dashboard) {
+            startDashboardMainFragment();
+        } else if (id == R.id.nav_add_user) {
             startAddMenteeFragment();
         } else if (id == R.id.nav_users) {
             startViewMenteeFragment();
