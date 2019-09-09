@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
@@ -20,8 +21,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.facebook.stetho.Stetho;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.io.IOException;
 
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.aboutauthor.AboutAuthorActivity;
@@ -33,6 +32,7 @@ public class DashboardActivity extends AppCompatActivity
 
     private boolean mDoubleBackToExitPressedOnce = false;
     private DashboardViewModel viewModel;
+    private Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,22 +67,6 @@ public class DashboardActivity extends AppCompatActivity
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.framelayout_content, new MainDashboardFragment());
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
-    private void startAddMenteeFragment() {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.framelayout_content, new AddMenteeFragment());
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
-    private void startViewMenteeFragment() {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.framelayout_content, new ViewMenteeFragment());
         transaction.addToBackStack(null);
         transaction.commit();
     }
@@ -157,18 +141,24 @@ public class DashboardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard) {
-            startDashboardMainFragment();
+            fragment = new MainDashboardFragment();
         } else if (id == R.id.nav_add_user) {
-            startAddMenteeFragment();
+            fragment = new AddMenteeFragment();
         } else if (id == R.id.nav_users) {
-            startViewMenteeFragment();
+            fragment = new ViewMenteeFragment();
         } else if (id == R.id.nav_stats) {
-            // show app stats
+            fragment = new Fragment();
         } else if (id == R.id.nav_about) {
             showAboutDialog();
         } else if (id == R.id.nav_about_author) {
             startActivity(new Intent(this, AboutAuthorActivity.class));
         }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.framelayout_content, fragment)
+                .addToBackStack(null)
+                .commit();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
