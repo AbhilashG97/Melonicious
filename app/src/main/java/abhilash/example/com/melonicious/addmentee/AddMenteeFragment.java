@@ -57,9 +57,12 @@ public class AddMenteeFragment extends Fragment {
             @Override
             public void onChanged(Mentee mentee) {
                 Log.i("FETCHED USER", mentee.toString());
-                Toast.makeText(getContext(), mentee.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Mentee added to database!", Toast.LENGTH_LONG).show();
             }
         });
+        // TODO: If mentee already exists, prompt the user; don't fetch the data from the API
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .remove(this).commit();
     }
 
     private void onAddUserButtonClicked() {

@@ -1,4 +1,4 @@
-package abhilash.example.com.melonicious.adapters;
+package abhilash.example.com.melonicious.viewmentee;
 
 import android.net.Uri;
 import android.util.Log;

@@ -73,43 +73,48 @@ public class DashboardActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-
-            int count = getSupportFragmentManager().getBackStackEntryCount();
-
-            if (count == 1) {
-                startDashboardMainFragment();
-
-                super.onBackPressed();
-                if (mDoubleBackToExitPressedOnce) {
-                    super.onBackPressed();
-                    this.finish();
-                }
-
-                this.mDoubleBackToExitPressedOnce = true;
-
-                try {
-                    Snackbar.make(findViewById(R.id.main_fragment_coordinator), R.string.action_exit,
-                            Snackbar.LENGTH_SHORT).show();
-                } catch (NullPointerException npe) {
-                    npe.printStackTrace();
-                }
-
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        mDoubleBackToExitPressedOnce = false;
-                    }
-                }, 2000);
-
-            } else {
-                getSupportFragmentManager().popBackStack();
-            }
         }
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 1) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.framelayout_content, new MainDashboardFragment())
+                    .addToBackStack(null)
+                    .commit();
+
+            super.onBackPressed();
+            if (mDoubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                this.finish();
+            }
+
+            this.mDoubleBackToExitPressedOnce = true;
+
+            try {
+                Snackbar.make(findViewById(R.id.main_fragment_coordinator), R.string.action_exit,
+                        Snackbar.LENGTH_SHORT).show();
+            } catch (NullPointerException npe) {
+                npe.printStackTrace();
+            }
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    mDoubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+
+        } else {
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+
     }
 
     @Override
@@ -158,6 +163,7 @@ public class DashboardActivity extends AppCompatActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.framelayout_content, fragment)
                 .addToBackStack(null)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
