@@ -25,12 +25,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/image_mentee_profile"
+                app:layout_constraintStart_toEndOf="@+id/image_github_user_profile"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="GitHub username" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/image_mentee_profile"
+                android:id="@+id/image_github_user_profile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"

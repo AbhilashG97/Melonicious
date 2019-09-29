@@ -55,7 +55,7 @@ public class ViewMenteeRecyclerViewAdapter extends RecyclerView.Adapter<ViewMent
 
         public ViewMenteeViewHolder(@NonNull View itemView) {
             super(itemView);
-            menteeCircleImageView = itemView.findViewById(R.id.image_mentee_profile);
+            menteeCircleImageView = itemView.findViewById(R.id.image_github_user_profile);
             menteeUsername = itemView.findViewById(R.id.text_mentee_username);
         }
     }

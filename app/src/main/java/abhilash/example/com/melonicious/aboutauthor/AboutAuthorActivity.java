@@ -25,7 +25,7 @@ public class AboutAuthorActivity extends AppCompatActivity implements AppBarLayo
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = findViewById(R.id.tabs_about_author);
+        TabLayout tabLayout = findViewById(R.id.tabs_view_repositories);
         viewPager = findViewById(R.id.pager_about_author);
 
         tabLayout.addTab(tabLayout.newTab());
