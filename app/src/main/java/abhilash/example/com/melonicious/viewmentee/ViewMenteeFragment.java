@@ -18,12 +18,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.addmentee.AddMenteeFragment;
+import abhilash.example.com.melonicious.customlistener.ClickListener;
 
 public class ViewMenteeFragment extends Fragment {
 
     private ViewMenteeViewModel mViewModel;
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
+    private ViewMenteeRecyclerViewAdapter viewMenteeRecyclerViewAdapter;
 
     public static ViewMenteeFragment newInstance() {
         return new ViewMenteeFragment();
@@ -45,25 +47,37 @@ public class ViewMenteeFragment extends Fragment {
 
         Log.i("MENTEE LIST FRAG", mViewModel.getMenteeList().toString());
 
-        ViewMenteeRecyclerViewAdapter viewMenteeRecyclerViewAdapter
+        viewMenteeRecyclerViewAdapter
                 = new ViewMenteeRecyclerViewAdapter(mViewModel.getMenteeList());
         recyclerView.setAdapter(viewMenteeRecyclerViewAdapter);
+        onRecyclerViewItemClicked();
 
         return view;
     }
 
     private void onFABClicked() {
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.framelayout_content, new AddMenteeFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
+        fab.setOnClickListener(view -> {
+            FragmentManager manager = getFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.framelayout_content, new AddMenteeFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         });
     }
 
+    private void onRecyclerViewItemClicked() {
+        viewMenteeRecyclerViewAdapter.setClickListener(new ClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // TODO : Show repositories of the selected user
+                Log.i("ITEM CLICKED", "ITEM CLICKED");
+            }
 
+            @Override
+            public void onLongItemClick(View view, int position) {
+                // TODO: Do something interesting here
+                Log.i("LONG ITEM CLICK", "LONG PRESS");
+            }
+        });
+    }
 }
