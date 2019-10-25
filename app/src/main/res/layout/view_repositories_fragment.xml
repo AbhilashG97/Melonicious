@@ -65,20 +65,6 @@
 
             </LinearLayout>
 
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                android:id="@+id/toolbar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="?attr/actionBarSize"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_marginBottom="48dp"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:fitsSystemWindows="true"-->
-<!--                android:gravity="top"-->
-<!--                app:layout_anchor="@id/linear_author_title"-->
-<!--                app:layout_collapseMode="pin"-->
-<!--                app:popupTheme="@style/AppTheme.PopupOverlay"-->
-<!--                app:title=""></androidx.appcompat.widget.Toolbar>-->
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs_view_repositories"
                 android:layout_width="match_parent"

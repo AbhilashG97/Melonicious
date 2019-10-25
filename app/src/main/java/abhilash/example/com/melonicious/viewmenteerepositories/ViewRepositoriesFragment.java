@@ -1,5 +1,6 @@
 package abhilash.example.com.melonicious.viewmenteerepositories;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -17,26 +16,35 @@ import com.google.android.material.tabs.TabLayout;
 
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.adapters.ViewMenteeRepositoriesPagerAdapter;
+import abhilash.example.com.melonicious.model.Mentee;
 
-public class ViewRepositoriesFragment extends Fragment implements AppBarLayout.OnOffsetChangedListener{
+public class ViewRepositoriesFragment extends Fragment implements AppBarLayout.OnOffsetChangedListener {
 
     private ViewPager viewRepositoriesViewPager;
     private ViewRepositoriesViewModel mViewModel;
+    private Mentee mentee;
+    private Context context;
 
-    public static ViewRepositoriesFragment newInstance() {
-        return new ViewRepositoriesFragment();
+    public ViewRepositoriesFragment() {
+        //Default constructor
+    }
+
+    public ViewRepositoriesFragment(Mentee mentee) {
+        this.mentee = mentee;
+    }
+
+    public ViewRepositoriesFragment(Mentee mentee, Context context) {
+        this.mentee = mentee;
+        this.context = context;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.view_repositories_fragment, container, false);
-        Toolbar toolbar = view.findViewById(R.id.toolbar_layout_view_repositories);
-        toolbar.setTitle("");
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        View view = inflater.inflate(R.layout.view_repositories_fragment, container, false);
 
         TabLayout tabLayout = view.findViewById(R.id.tabs_view_repositories);
-        viewRepositoriesViewPager = view.findViewById(R.id.pager_about_author);
+        viewRepositoriesViewPager = view.findViewById(R.id.pager_view_repositories);
 
         tabLayout.addTab(tabLayout.newTab());
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

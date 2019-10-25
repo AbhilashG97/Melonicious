@@ -52,7 +52,6 @@ public class ViewMenteeRepository {
 
         try {
             menteeList = future.get();
-            Log.i("REPOSITORY FETCH IS", menteeList.toString());
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -61,7 +60,7 @@ public class ViewMenteeRepository {
 
         executorService.shutdown();
 
-        Log.i("REPOSITORY FETCH OS", menteeList.toString());
+        Log.i("REPOSITORY FETCH", menteeList.toString());
 
         return menteeList;
     }

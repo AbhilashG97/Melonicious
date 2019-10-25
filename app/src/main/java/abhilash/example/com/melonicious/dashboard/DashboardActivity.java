@@ -1,8 +1,8 @@
 package abhilash.example.com.melonicious.dashboard;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +23,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import abhilash.example.com.melonicious.R;
-import abhilash.example.com.melonicious.aboutauthor.AboutAuthorActivity;
 import abhilash.example.com.melonicious.addmentee.AddMenteeFragment;
 import abhilash.example.com.melonicious.viewmentee.ViewMenteeFragment;
 
@@ -156,7 +155,7 @@ public class DashboardActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             showAboutDialog();
         } else if (id == R.id.nav_about_author) {
-            startActivity(new Intent(this, AboutAuthorActivity.class));
+            Log.i("ABOUT AUTHOR", "Show about author fragment");
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -19,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import abhilash.example.com.melonicious.R;
 import abhilash.example.com.melonicious.addmentee.AddMenteeFragment;
 import abhilash.example.com.melonicious.customlistener.ClickListener;
+import abhilash.example.com.melonicious.viewmenteerepositories.ViewRepositoriesFragment;
 
 public class ViewMenteeFragment extends Fragment {
 
@@ -69,8 +70,19 @@ public class ViewMenteeFragment extends Fragment {
         viewMenteeRecyclerViewAdapter.setClickListener(new ClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // TODO : Show repositories of the selected user
+                // TODO : Get repositories of the selected user and show them
+                String url = mViewModel.getMenteeList().get(position).getReposUrl();
+
                 Log.i("ITEM CLICKED", "ITEM CLICKED");
+                Log.i("REPOSITORY URL", url);
+
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.add(R.id.framelayout_content,
+                        new ViewRepositoriesFragment(mViewModel.getMenteeList().get(position)),
+                        "viewRepositories");
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
 
             @Override
