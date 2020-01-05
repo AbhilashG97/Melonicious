@@ -6,11 +6,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -19,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.facebook.stetho.Stetho;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,23 +44,49 @@ public class DashboardActivity extends AppCompatActivity
         setContentView(R.layout.dashboard_activity);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(DashboardActivity.this,R.color.colorPrimary));
 
 
         viewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
 
         initializeStetho();
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
         startDashboardMainFragment();
+    }
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            int id = menuItem.getItemId();
+            switch (id){
+                case R.id.nav_dashboard:
+                    loadFragment(new MainDashboardFragment());
+                    return true;
+                case R.id.nav_add_user:
+                    loadFragment(new AddMenteeFragment());
+                    return true;
+                case R.id.nav_users:
+                    loadFragment(new ViewMenteeFragment());
+                    return true;
+                case R.id.nav_stats:
+                    loadFragment(new Fragment());
+                    return true;
+                default:
+                    return false;
+            }
+        }
+    };
+    private void loadFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.framelayout_content,fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void initializeStetho() {
@@ -74,10 +105,7 @@ public class DashboardActivity extends AppCompatActivity
     public void onBackPressed() {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
+
 
         int count = getSupportFragmentManager().getBackStackEntryCount();
 
@@ -152,10 +180,6 @@ public class DashboardActivity extends AppCompatActivity
             fragment = new ViewMenteeFragment();
         } else if (id == R.id.nav_stats) {
             fragment = new Fragment();
-        } else if (id == R.id.nav_about) {
-            showAboutDialog();
-        } else if (id == R.id.nav_about_author) {
-            Log.i("ABOUT AUTHOR", "Show about author fragment");
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -165,8 +189,7 @@ public class DashboardActivity extends AppCompatActivity
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
