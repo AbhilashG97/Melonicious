@@ -14,6 +14,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity
             android:name=".aboutauthor.AboutAuthorActivity"
             android:label="@string/title_activity_about_author"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -64,6 +64,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
+    implementation 'androidx.preference:preference:1.1.0-alpha05'
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     // rxJava and rxAndroid
